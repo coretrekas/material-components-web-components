@@ -13,7 +13,6 @@ export class CoretrekList extends LitElement {
   constructor() {
     super();
     this._asyncComponent = true;
-    // properties
     this.header = '';
     const items = this.querySelector('script[type="application/json"]');
     this.items = JSON.parse(items.innerHTML);

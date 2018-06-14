@@ -54,4 +54,5 @@ export class CoretrekDrawer extends ComponentElement {
   }
 }
 
+
 customElements.define('coretrek-mwc-drawer', CoretrekDrawer);

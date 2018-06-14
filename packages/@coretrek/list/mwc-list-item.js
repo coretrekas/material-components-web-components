@@ -34,7 +34,6 @@ export default class CoretreListItemLink extends LitElement {
   }
 
   _createRoot() {
-    this._ripple = new MDCWCRipple(this);
     return this;
   }
 
