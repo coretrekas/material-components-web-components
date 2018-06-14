@@ -20,7 +20,9 @@ limitations under the License.
   <title>Coretrek drawer demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+  
   <script type="module" src="../node_modules/@material/coretrek-mwc-drawer/mwc-drawer.js"></script>
+  <script type="module" src="../node_modules/@material/coretrek-mwc-list/mwc-list.js"></script>
   <script type="module" src="../node_modules/@material/mwc-button/mwc-button.js"></script>
   <script type="module" src="../node_modules/@material/mwc-icon/mwc-icon.js"></script>
   <link rel="stylesheet" href="demo-component.css">
@@ -37,14 +39,30 @@ limitations under the License.
 
     <h4>EEEELG</h4>
     <coretrek-mwc-drawer header="Custom Drawer">
-        <nav class="mdc-list">
-            <a class="mdc-list-item mdc-list-item--activated" href="#">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>Inbox
-            </a>
-            <a class="mdc-list-item" href="#">
-                <i class="material-icons mdc-list-item__graphic" aria-hidden="true">star</i>Star
-            </a>
-        </nav>
+        <div slot="header">Custom Drawer</div>
+        <coretrek-mwc-list header="Custom Drawer">
+            <script type="application/json">
+              [{
+                "text": "Test",
+                "secondary": "ipsum lorem"
+                },{
+                "text": "Test selected",
+                "secondary": "ipsum lorem - im selected",
+                "icon": "wifi",
+                "selected": true,
+                "divided": true
+              },{
+                "text": "Test link",
+                "secondary": "ipsum lorem - im a link",
+                "link": "http://www.vg.no",
+                "icon": "sentiment_very_satisfied"
+              },{
+                "text": "Test active",
+                "secondary": "ipsum lorem - im a hyperactive",
+                "icon": "star"
+              }]
+            </script>
+        </coretrek-mwc-list>
     </coretrek-mwc-drawer>
     <mwc-button outlined label="Menu" icon="menu"></mwc-button>
 

@@ -16,30 +16,71 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <html>
+
 <head>
   <title>Coretrek drawer demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
   <script type="module" src="../node_modules/@material/coretrek-mwc-list/mwc-list.js"></script>
+  <script type="module" src="../node_modules/@material/mwc-icon/mwc-icon.js"></script>  
   <link rel="stylesheet" href="demo-component.css">
 </head>
+
 <body class="unresolved">
   <header>
     <a href="index.html">
-        <mwc-icon>arrow_back</mwc-icon>
-        <span>Coretrek Drawer</span>
+      <mwc-icon>arrow_back</mwc-icon>
+      <span>Coretrek Drawer</span>
     </a>
   </header>
 
   <main>
 
     <h4>EEEELG</h4>
+    
     <coretrek-mwc-list header="Custom Drawer">
+      <script type="application/json">
+        [{
+          "text": "Test",
+          "secondary": "ipsum lorem"
+        },{
+          "text": "Test selected",
+          "secondary": "ipsum lorem - im selected",
+          "selected": true
+        },{
+          "text": "Test link",
+          "secondary": "ipsum lorem - im a link",
+          "link": "www.vg.no",
+          "icon": "sentiment_very_satisfied"
+        },{
+          "text": "Test active",
+          "secondary": "ipsum lorem - im a hyperactive",
+          "activated": true,
+          "icon": "star"
+        }]
+      </script>
+      <!-- <template>
+          <coretrek-mwc-list-item title="${title}"/>
+      </template> -->
+      <!-- <template>
+          <a class="mdc-list-item " href="#">
+              <span class="mdc-list-item__text">
+                First-line text
+                <span class="mdc-list-item__secondary-text">
+                  Second-line text
+                </span>
+              </span>
+            </a>
+      </template> -->
     </coretrek-mwc-list>
     <script>
       addEventListener('load', () => document.body.classList.remove('unresolved'));
+      document.querySelector('coretrek-mwc-list').addEventListener('click', (e)=> {
+        console.log(e);
+      })
     </script>
 
   </main>
 </body>
+
 </html>
