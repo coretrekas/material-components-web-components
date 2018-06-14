@@ -25,7 +25,6 @@ import '@material/mwc-icon/mwc-icon-font.js';
 class MDCWCTextField extends MDCWebComponentMixin(MDCTextField) {}
 
 export class Textfield extends ComponentElement {
-
   static get ComponentClass() {
     return MDCWCTextField;
   }

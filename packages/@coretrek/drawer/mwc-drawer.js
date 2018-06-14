@@ -39,7 +39,9 @@ export class CoretrekDrawer extends ComponentElement {
     <div class="mdc-drawer mdc-drawer--temporary">
         <nav class="mdc-drawer__drawer">
             <header class="mdc-drawer__header">
-            <div class="mdc-drawer__header-content">${this.header}</div>
+              <div class="mdc-drawer__header-content">
+                <slot name="header">${this.header}</slot>
+              </div>
             </header>
             <div id="content" class="mdc-drawer__content">
                 <slot></slot>
