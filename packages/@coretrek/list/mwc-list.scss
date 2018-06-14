@@ -1,1 +1,5 @@
 @import '@material/list/mdc-list.scss';
+@import '@material/mwc-icon/mwc-icon.scss';
+.material-icons {
+    @extend %material-icons;
+  }

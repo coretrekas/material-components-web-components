@@ -1,5 +1,7 @@
 import {LitElement, html, classString as c$} from '@polymer/lit-element/lit-element.js';
 import {style} from './mwc-list-css.js';
+import '@material/mwc-icon/mwc-icon-font.js';
+import './mwc-list-item.js';
 
 export class CoretrekList extends LitElement {
   static get properties() {
@@ -13,49 +15,35 @@ export class CoretrekList extends LitElement {
     this._asyncComponent = true;
     // properties
     this.header = '';
-  }
-
-  set open(open) {
-    this.componentReady().then((c) => (c.open = open));
+    const items = this.querySelector('script[type="application/json"]');
+    this.items = JSON.parse(items.innerHTML);
   }
 
   _render() {
     return html`
-    ${this._renderStyle()}
-    <div class="mdc-list">
-        ${this._renderDemo()}
-    </div>`;
+      ${this._renderStyle()}
+      <div class="mdc-list mdc-list--two-line">${this._renderItems()}</div>
+    `;
   }
-  _renderStyle() {
-    return style;
+  _renderItems() {
+    const template = this.querySelector('template');
+    return this.items.map((item) => (template && template.content) || this._renderItem(item));
+  }
+  _renderItem({link, text, secondary, selected, activated, icon, divided}) {
+    return html`
+    ${divided ? html`<div class="mdc-list-divider" role="separator"></div>`:''}
+    <coretrek-mwc-list-item 
+      link="${link}" 
+      text="${text}" 
+      secondary="${secondary}" 
+      selected="${selected}" 
+      activated="${activated}"
+      icon="${icon}"
+    />`;
   }
 
-  _renderDemo() {
-    return html`
-    <li class="mdc-list-item">
-    <span class="mdc-list-item__text">
-      First-line text
-      <span class="mdc-list-item__secondary-text">
-        Second-line text
-      </span>
-    </span>
-  </li>
-  <li class="mdc-list-item">
-    <span class="mdc-list-item__text">
-      First-line text
-      <span class="mdc-list-item__secondary-text">
-        Second-line text
-      </span>
-    </span>
-  </li>
-  <a class="mdc-list-item " href="#">
-    <span class="mdc-list-item__text">
-      First-line text
-      <span class="mdc-list-item__secondary-text">
-        Second-line text
-      </span>
-    </span>
-  </a>`;
+  _renderStyle() {
+    return style;
   }
 }
 
